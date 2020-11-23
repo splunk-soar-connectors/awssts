@@ -1,0 +1,338 @@
+{
+    "appid": "8e8be6eb-a509-45ca-8559-586cb592a6d8",
+    "name": "AWS Security Token Service",
+    "description": "This app integrates with AWS Security Token Service and allows a user to retrieve a temporary set of credentials for some specified account",
+    "type": "identity management",
+    "product_vendor": "AWS",
+    "logo": "logo_awssts.svg",
+    "logo_dark": "logo_awssts_dark.svg",
+    "product_name": "Security Token Service",
+    "python_version": "3",
+    "product_version_regex": ".*",
+    "publisher": "Splunk",
+    "license": "Copyright (c) Splunk, 2020",
+    "app_version": "1.0.0",
+    "utctime_updated": "2020-11-11T21:17:24.258748Z",
+    "package_name": "phantom_awssecuritytokenservice",
+    "main_module": "awssts_connector.pyc",
+    "min_phantom_version": "4.8.24304",
+    "app_wizard_version": "1.0.0",
+    "latest_tested_versions": [
+        "Cloud API, November 11, 2020"
+    ],
+    "pip_dependencies": {
+        "wheel": [
+            {
+                "module": "boto3",
+                "input_file": "wheels/boto3-1.16.16-py2.py3-none-any.whl"
+            },
+            {
+                "module": "botocore",
+                "input_file": "wheels/botocore-1.19.17-py2.py3-none-any.whl"
+            },
+            {
+                "module": "jmespath",
+                "input_file": "wheels/jmespath-0.10.0-py2.py3-none-any.whl"
+            }
+        ]
+    },
+    "pip3_dependencies": {
+        "wheel": [
+            {
+                "module": "boto3",
+                "input_file": "wheels/boto3-1.16.16-py2.py3-none-any.whl"
+            },
+            {
+                "module": "botocore",
+                "input_file": "wheels/botocore-1.19.17-py2.py3-none-any.whl"
+            },
+            {
+                "module": "jmespath",
+                "input_file": "wheels/jmespath-0.10.0-py2.py3-none-any.whl"
+            }
+        ]
+    },
+    "configuration": {
+        "access_key": {
+            "description": "Access Key",
+            "data_type": "password",
+            "required": false,
+            "value_list": [],
+            "default": "",
+            "order": 0
+        },
+        "secret_key": {
+            "description": "Secret Key",
+            "data_type": "password",
+            "required": false,
+            "value_list": [],
+            "default": "",
+            "order": 1
+        },
+        "region": {
+            "description": "Default Region",
+            "data_type": "string",
+            "required": true,
+            "value_list": [
+                "US East (Ohio)",
+                "US East (N. Virginia)",
+                "US West (N. California)",
+                "US West (Oregon)",
+                "Canada (Central)",
+                "Asia Pacific (Mumbai)",
+                "Asia Pacific (Tokyo)",
+                "Asia Pacific (Seoul)",
+                "Asia Pacific (Singapore)",
+                "Asia Pacific (Sydney)",
+                "China (Ningxia)",
+                "EU (Frankfurt)",
+                "EU (Ireland)",
+                "EU (London)",
+                "South Americia (Sao Paulo)",
+                "US GovCloud East",
+                "US GovCloud West"
+            ],
+            "default": "",
+            "order": 2
+        },
+        "use_role": {
+            "description": "Use attached role when running Phantom in ec2",
+            "data_type": "boolean",
+            "required": false,
+            "default": false,
+            "order": 3
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "verbose": "",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "assume role",
+            "identifier": "assume_role",
+            "description": "Assume a role",
+            "verbose": "Retrieve a token for a specified role and user account",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "role_session_name": {
+                    "description": "Role Session Name",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "Request from Phantom by user {X} for Phantom Event {Y}",
+                    "order": 0
+                },
+                "external_id": {
+                    "description": "External ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "role_arn": {
+                    "description": "Role ARN",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.role_session_name",
+                    "data_type": "string",
+                    "column_name": "role_session_name",
+                    "column_order": 0,
+                    "example_values": [
+                        "testing"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.external_id",
+                    "data_type": "string",
+                    "column_name": "external_id",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.role_arn",
+                    "data_type": "string",
+                    "column_name": "role_arn",
+                    "column_order": 2,
+                    "example_values": [
+                        "arn:aws:iam::157568067690:role/UpdateApp-tctest"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3,
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Credentials: {'AccessKeyId': 'ASIASJL6J5BVJVZH7PHL', 'SecretAccessKey': 'xiVRzeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnk9Iwh', 'SessionToken': 'FwoGZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpva9Y6txO', 'Expiration': '2020-11-16 21:49:35'}"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Credentials.Expiration",
+                    "data_type": "string",
+                    "example_values": [
+                        "2020-11-16 21:49:35"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Credentials.AccessKeyId",
+                    "data_type": "string",
+                    "example_values": [
+                        "ASIASJL6J5BVJVZH7PHL"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Credentials.SessionToken",
+                    "data_type": "string",
+                    "example_values": [
+                        "FwoGZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpva9Y6txO"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Credentials.SecretAccessKey",
+                    "data_type": "string",
+                    "example_values": [
+                        "xiVRzeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnk9Iwh"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AssumedRoleUser.Arn",
+                    "data_type": "string",
+                    "example_values": [
+                        "arn:aws:sts::157568067690:assumed-role/UpdateApp-tctest/testing"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AssumedRoleUser.AssumedRoleId",
+                    "data_type": "string",
+                    "example_values": [
+                        "AROASJL6J5BVCJG7UYLCD:testing"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "af9a1c39-1fea-4966-ba32-722f7897ff84"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Mon, 16 Nov 2020 20:49:35 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_type": "string",
+                    "example_values": [
+                        "text/xml"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
+                    "data_type": "string",
+                    "example_values": [
+                        "1045"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amzn-requestid",
+                    "data_type": "string",
+                    "example_values": [
+                        "af9a1c39-1fea-4966-ba32-722f7897ff84"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.Credentials.Expiration",
+                    "data_type": "string",
+                    "example_values": [
+                        "2020-11-16 21:49:35"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.Credentials.AccessKeyId",
+                    "data_type": "string",
+                    "example_values": [
+                        "ASIASJL6J5BVJVZH7PHL"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.Credentials.SessionToken",
+                    "data_type": "string",
+                    "example_values": [
+                        "FwoGZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpva9Y6txO"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary.Credentials.SecretAccessKey",
+                    "data_type": "string",
+                    "example_values": [
+                        "xiVRzeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnk9Iwh"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        }
+    ]
+}
