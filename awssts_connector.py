@@ -318,9 +318,6 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
         action_result.add_data(resp_json)
 
-        # summary = action_result.set_summary({})
-        # summary['Credentials'] = resp_json.get('Credentials', 0)
-
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def handle_action(self, param):
