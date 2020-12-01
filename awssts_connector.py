@@ -266,7 +266,6 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         except Exception as e:
             return RetVal(action_result.set_status(phantom.APP_ERROR, "boto3 call to STS failed", e), None)
 
-        # return phantom.APP_SUCCESS, self._sanitize_dates(resp_json)
         return phantom.APP_SUCCESS, self._sanitize_dates(resp_json)
 
     def _handle_test_connectivity(self, param):
@@ -314,7 +313,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
                                                       RoleSessionName=role_session_name,
                                                       RoleArn=role_arn)
         if phantom.is_fail(ret_val):
-            pass
+            return action_result.get_status()
 
         action_result.add_data(resp_json)
 
