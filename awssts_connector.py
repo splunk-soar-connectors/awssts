@@ -14,7 +14,7 @@ from phantom.action_result import ActionResult
 
 # Usage of the consts file is recommended
 from awssts_consts import *
-from boto3 import client
+from boto3 import client, Session
 from datetime import datetime
 from botocore.config import Config
 import requests
@@ -66,9 +66,9 @@ class AwsSecureTokenServiceConnector(BaseConnector):
             if not credentials:
                 return self.set_status(phantom.APP_ERROR, "Failure to get ec2 role credentials")
             else:
-                self._access_key = credentials._access_key
-                self._secret_key = credentials._secret_key
-                self._token = credentials._token
+                self._access_key = credentials.access_key
+                self._secret_key = credentials.secret_key
+                self._token = credentials.token
 
         else:
             self._access_key = config.get(STS_JSON_ACCESS_KEY)
@@ -96,6 +96,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
                     region_name=self._region,
                     aws_access_key_id=self._access_key,
                     aws_secret_access_key=self._secret_key,
+                    aws_session_token=self._token,
                     config=boto_config
                 )
 
@@ -337,7 +338,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
     def _handle_get_ec2_role(self):
 
-        session = boto3.Session(region_name=self._region)
+        session = Session(region_name=self._region)
         credentials = session.get_credentials()
         return credentials
 
