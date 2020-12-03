@@ -123,35 +123,43 @@
             "type": "generic",
             "read_only": false,
             "parameters": {
+                "role_arn": {
+                    "description": "Role ARN",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [
+                        "aws role arn"
+                    ],
+                    "order": 0
+                },
                 "role_session_name": {
                     "description": "Role Session Name",
                     "data_type": "string",
                     "required": false,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "Request from Phantom by user {X} for Phantom Event {Y}",
-                    "order": 0
+                    "primary": true,
+                    "contains": [
+                        "aws session name"
+                    ],
+                    "default": "Request_from_Phantom",
+                    "order": 1
+                },
+                "role_session_duration": {
+                    "description": "Role Session Duration",
+                    "data_type": "numeric",
+                    "required": false,
+                    "default": 3600,
+                    "order": 2
                 },
                 "external_id": {
                     "description": "External ID",
                     "data_type": "string",
                     "required": false,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
-                    "order": 1
-                },
-                "role_arn": {
-                    "description": "Role ARN",
-                    "data_type": "string",
-                    "required": false,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
-                    "order": 2
+                    "primary": true,
+                    "contains": [
+                        "aws external id"
+                    ],
+                    "order": 3
                 }
             },
             "output": [
