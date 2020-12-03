@@ -139,7 +139,7 @@
                     "required": false,
                     "primary": true,
                     "contains": [
-                        "aws session name"
+                        "aws role session name"
                     ],
                     "default": "Request_from_Phantom",
                     "order": 1
@@ -168,23 +168,35 @@
                     "data_type": "string",
                     "column_name": "role_session_name",
                     "column_order": 0,
+                    "contains": [
+                        "aws role session name"
+                    ],
                     "example_values": [
-                        "testing"
+                        "Request_from_Phantom"
                     ]
                 },
                 {
                     "data_path": "action_result.parameter.external_id",
                     "data_type": "string",
                     "column_name": "external_id",
-                    "column_order": 1
+                    "column_order": 1,
+                    "contains": [
+                        "aws external id"
+                    ],
+                    "example_values": [
+                        "999"
+                    ]
                 },
                 {
                     "data_path": "action_result.parameter.role_arn",
                     "data_type": "string",
                     "column_name": "role_arn",
                     "column_order": 2,
+                    "contains": [
+                        "aws role arn"
+                    ],
                     "example_values": [
-                        "arn:aws:iam::157568067690:role/UpdateApp-tctest"
+                        "arn:aws:iam::157568067690:role/TCtestRole"
                     ]
                 },
                 {
@@ -200,7 +212,8 @@
                     "data_path": "action_result.message",
                     "data_type": "string",
                     "example_values": [
-                        "Credentials: {'AccessKeyId': 'ASIASJL6J5BVJVZH7PHL', 'SecretAccessKey': 'xiVRzeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnk9Iwh', 'SessionToken': 'FwoGZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpva9Y6txO', 'Expiration': '2020-11-16 21:49:35'}"
+                        "Credentials: {'AccessKeyId': 'ASIASJL6J5BVJVZH7PHL', 'SecretAccessKey': 'xiVRzeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnk9Iwh', 'SessionToken': 'FwoGZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpva9Y6txO', 'Expiration': '2020-11-16 21:49:35'}",
+                        ""
                     ]
                 },
                 {
@@ -221,56 +234,56 @@
                     "data_path": "action_result.data.*.Credentials.Expiration",
                     "data_type": "string",
                     "example_values": [
-                        "2020-11-16 21:49:35"
+                        "2020-12-03 21:59:19"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Credentials.AccessKeyId",
                     "data_type": "string",
                     "example_values": [
-                        "ASIASJL6J5BVJVZH7PHL"
+                        "ASIASJL6J5BVCSZ4LG44"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Credentials.SessionToken",
                     "data_type": "string",
                     "example_values": [
-                        "FwoGZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpva9Y6txO"
+                        "FwoGZXIvYXdzEE4aDA2uCbAQKVJP7FPODCK4AfnDf/AwR3H93S2ueX+lMFsDGQnbKO6uaot2BCThDuBY5qylrnPHl7BXKCKttkVyER/QgDmEoCYfIRWb/frTd3yu8YMjaXkqHylnKLcZlQDYrraj6PEgtDQpIOrqPWR3Srq1UOUZuIelUBlxCrWdJGpOVXMrF4cHx2++QIXC/yKnseYzGqQZXNczUPP9XD6D0ffZaHqE3S35wFgwdgYzeAWt2TW0HoGqGOI7eF8zvRayMcGas8vrFzYop6Ol/gUyLS5KI8LZzBhXSSUtFb74Oh3fyEFWgnmcX0ZCF3W3sWqIhDS6LKCDdL5vfnlpxw=="
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Credentials.SecretAccessKey",
                     "data_type": "string",
                     "example_values": [
-                        "xiVRzeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnk9Iwh"
+                        "1gn+SzbvhXNruEyLgakW1MHhCKwqSFW2ksJFvcIA"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.AssumedRoleUser.Arn",
                     "data_type": "string",
                     "example_values": [
-                        "arn:aws:sts::157568067690:assumed-role/UpdateApp-tctest/testing"
+                        "arn:aws:sts::157568067690:assumed-role/TCtestRole/Request_from_Phantom"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.AssumedRoleUser.AssumedRoleId",
                     "data_type": "string",
                     "example_values": [
-                        "AROASJL6J5BVCJG7UYLCD:testing"
+                        "AROASJL6J5BVF3SWQMJ75:Request_from_Phantom"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.ResponseMetadata.RequestId",
                     "data_type": "string",
                     "example_values": [
-                        "af9a1c39-1fea-4966-ba32-722f7897ff84"
+                        "c8bc1c72-36e1-4b27-8f28-95e26e7013ea"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
                     "data_type": "string",
                     "example_values": [
-                        "Mon, 16 Nov 2020 20:49:35 GMT"
+                        "Thu, 03 Dec 2020 20:59:19 GMT"
                     ]
                 },
                 {
@@ -284,14 +297,14 @@
                     "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
                     "data_type": "string",
                     "example_values": [
-                        "1045"
+                        "1073"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amzn-requestid",
                     "data_type": "string",
                     "example_values": [
-                        "af9a1c39-1fea-4966-ba32-722f7897ff84"
+                        "c8bc1c72-36e1-4b27-8f28-95e26e7013ea"
                     ]
                 },
                 {
@@ -334,6 +347,13 @@
                     "data_type": "string",
                     "example_values": [
                         "xiVRzeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnk9Iwh"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.role_session_duration",
+                    "data_type": "numeric",
+                    "example_values": [
+                        3600
                     ]
                 }
             ],
