@@ -15,10 +15,10 @@
     "utctime_updated": "2020-11-11T21:17:24.258748Z",
     "package_name": "phantom_awssts",
     "main_module": "awssts_connector.py",
-    "min_phantom_version": "4.8.24304",
+    "min_phantom_version": "4.9.39220",
     "app_wizard_version": "1.0.0",
     "latest_tested_versions": [
-        "Cloud API, November 11, 2020"
+        "Cloud API, December 10, 2020"
     ],
     "pip_dependencies": {
         "wheel": [
@@ -196,7 +196,7 @@
                         "aws role arn"
                     ],
                     "example_values": [
-                        "arn:aws:iam::157568067690:role/TCtestRole"
+                        "arn:aws:iam::157568069999:role/TestRole"
                     ]
                 },
                 {
@@ -212,7 +212,7 @@
                     "data_path": "action_result.message",
                     "data_type": "string",
                     "example_values": [
-                        "Credentials: {'AccessKeyId': 'ASIASJL6J5BVJVZH7PHL', 'SecretAccessKey': 'xiVRzeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnk9Iwh', 'SessionToken': 'FwoGZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpva9Y6txO', 'Expiration': '2020-11-16 21:49:35'}",
+                        "Credentials: {'AccessKeyId': 'ASIASJL6ZZZZZH7PHL', 'SecretAccessKey': 'ZZZZZeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpvaZZZZZZ', 'Expiration': '2020-11-16 21:49:35'}",
                         ""
                     ]
                 },
@@ -233,8 +233,11 @@
                 {
                     "data_path": "action_result.data.*.Credentials",
                     "data_type": "string",
+                    "contains": [
+                        "aws credentials"
+                    ],
                     "example_values": [
-                        "2020-12-03 21:59:19"
+                        "{'AccessKeyId': 'ASIASJL6ZZZZZH7PHL', 'SecretAccessKey': 'ZZZZZeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpvaZZZZZZ', 'Expiration': '2020-11-16 21:49:35'}"
                     ]
                 },
                 {
@@ -269,14 +272,14 @@
                     "data_path": "action_result.data.*.AssumedRoleUser.Arn",
                     "data_type": "string",
                     "example_values": [
-                        "arn:aws:sts::157568067690:assumed-role/TCtestRole/Request_from_Phantom"
+                        "arn:aws:sts::157568099999:assumed-role/TestRole/Request_from_Phantom"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.AssumedRoleUser.AssumedRoleId",
                     "data_type": "string",
                     "example_values": [
-                        "AROASJL6J5BVF3SWQMJ75:Request_from_Phantom"
+                        "ASIASJL6ZZZZZH7PHL:Request_from_Phantom"
                     ]
                 },
                 {
@@ -339,21 +342,21 @@
                     "data_path": "action_result.summary.Credentials.AccessKeyId",
                     "data_type": "string",
                     "example_values": [
-                        "ASIASJL6J5BVJVZH7PHL"
+                        "ASIASJL6ZZZZZH7PHL"
                     ]
                 },
                 {
                     "data_path": "action_result.summary.Credentials.SessionToken",
                     "data_type": "string",
                     "example_values": [
-                        "FwoGZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpva9Y6txO"
+                        "ZZZZZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpvaZZZZZZ"
                     ]
                 },
                 {
                     "data_path": "action_result.summary.Credentials.SecretAccessKey",
                     "data_type": "string",
                     "example_values": [
-                        "xiVRzeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnk9Iwh"
+                        "ZZZZZeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnZZZZZ"
                     ]
                 },
                 {
