@@ -1,8 +1,12 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-# -----------------------------------------
-# Phantom sample App Connector python file
-# -----------------------------------------
+# --
+# File: awssts_connector.py
+#
+# Copyright (c) 2020 Splunk Inc.
+#
+# SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
+# without a valid written license from Splunk Inc. is PROHIBITED.
+#
+# --
 
 # Python 3 Compatibility imports
 from __future__ import print_function, unicode_literals
@@ -295,7 +299,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         action_result = self.add_action_result(ActionResult(dict(param)))
 
         role_session_name = param.get('role_session_name',
-                                      'Request_from_Phantom_by_user_X_for_Phantom_Event_Y')
+                                      'Request_from_Phantom')
         external_id = param.get('external_id', None)
         role_arn = param.get('role_arn', None)
 
