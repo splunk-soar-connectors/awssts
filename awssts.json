@@ -57,16 +57,12 @@
             "description": "Access Key",
             "data_type": "password",
             "required": false,
-            "value_list": [],
-            "default": "",
             "order": 0
         },
         "secret_key": {
             "description": "Secret Key",
             "data_type": "password",
             "required": false,
-            "value_list": [],
-            "default": "",
             "order": 1
         },
         "region": {
@@ -92,7 +88,6 @@
                 "US GovCloud East",
                 "US GovCloud West"
             ],
-            "default": "",
             "order": 2
         },
         "use_role": {
