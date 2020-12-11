@@ -10,7 +10,7 @@
     "python_version": "3",
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) Splunk, 2020",
+    "license": "Copyright (c) 2020 Splunk Inc.",
     "app_version": "1.0.0",
     "utctime_updated": "2020-11-11T21:17:24.258748Z",
     "package_name": "phantom_awssts",
