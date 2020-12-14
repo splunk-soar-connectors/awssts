@@ -30,3 +30,6 @@ STS_REGION_DICT = {
         "US GovCloud East": "us-gov-east-1",
         "US GovCloud West": "us-gov-west-1",
     }
+
+DEFAULT_ROLE_SESSION_DURATION = 3600
+DEFAULT_ROLE_SESSION_NAME = 'Request_from_Phantom'

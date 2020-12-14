@@ -299,9 +299,11 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         action_result = self.add_action_result(ActionResult(dict(param)))
 
         role_session_name = param.get('role_session_name',
-                                      'Request_from_Phantom')
+                                      DEFAULT_ROLE_SESSION_NAME)
         external_id = param.get('external_id', None)
         role_arn = param.get('role_arn', None)
+        role_session_duration = param.get('role_session_duration',
+                                          DEFAULT_ROLE_SESSION_DURATION)
 
         # create client
         if phantom.is_fail(self._create_client(action_result, service='sts')):
@@ -312,11 +314,13 @@ class AwsSecureTokenServiceConnector(BaseConnector):
             ret_val, resp_json = self._make_boto_call(action_result, 'assume_role',
                                                       RoleSessionName=role_session_name,
                                                       RoleArn=role_arn,
-                                                      ExternalId=external_id)
+                                                      ExternalId=external_id,
+                                                      DurationSeconds=role_session_duration)
         else:
             ret_val, resp_json = self._make_boto_call(action_result, 'assume_role',
                                                       RoleSessionName=role_session_name,
-                                                      RoleArn=role_arn)
+                                                      RoleArn=role_arn,
+                                                      DurationSeconds=role_session_duration)
         if phantom.is_fail(ret_val):
             return action_result.get_status()
 

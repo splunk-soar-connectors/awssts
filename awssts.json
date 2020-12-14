@@ -15,7 +15,7 @@
     "utctime_updated": "2020-11-11T21:17:24.258748Z",
     "package_name": "phantom_awssts",
     "main_module": "awssts_connector.py",
-    "min_phantom_version": "4.9.39220",
+    "min_phantom_version": "4.9.34514",
     "app_wizard_version": "1.0.0",
     "latest_tested_versions": [
         "Cloud API, December 10, 2020"
@@ -103,7 +103,6 @@
             "action": "test connectivity",
             "identifier": "test_connectivity",
             "description": "Validate the asset configuration for connectivity using supplied configuration",
-            "verbose": "",
             "type": "test",
             "read_only": true,
             "parameters": {},
@@ -140,7 +139,7 @@
                     "order": 1
                 },
                 "role_session_duration": {
-                    "description": "Role Session Duration",
+                    "description": "Role Session Duration (Seconds)",
                     "data_type": "numeric",
                     "required": false,
                     "default": 3600,
