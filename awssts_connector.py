@@ -20,7 +20,6 @@ from datetime import datetime
 from botocore.config import Config
 import requests
 import json
-from bs4 import BeautifulSoup
 import six
 
 
