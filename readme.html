@@ -1,0 +1,18 @@
+<!-- File: readme.html
+  Copyright (c) 2020 Splunk Inc.
+
+  SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
+  without a valid written license from Splunk Inc. is PROHIBITED.
+-->
+<html>
+
+<body>
+<h2>Asset Configuration</h2>
+There are two ways to configure an AWS STS asset.  The first is to configure the <b>access_key</b> and <b>secret_key</b> variables.  If it is preferred to use a role and Phantom is running as an EC2 instance, the <b>use_role</b> checkbox can be checked instead.  This will allow the role that is attached to the instance to be used.  Please see the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html">AWS EC2 and IAM documentation</a> for more information.
+
+<h2>Assuming a Role</h2>
+When calling the <b>assume_role</b> action, a dictionary containing the <b>AccessKeyId</b>, <b>SecretAccessKey</b>, <b>SessionToken</b> and <b>Expiration</b> will be returned.  This dictionary with data path <b>assume_role_1:action_result.data.*.Credentials</b> can be passed to the <b>credentials</b> parameter in another AWS app's action within a playbook.  These credentials will be used to override the access key and secret key if configured in the asset for that action, or if the EC2 instance role credentials are used.
+<p>
+</body>
+
+</html>
