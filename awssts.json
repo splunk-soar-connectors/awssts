@@ -20,22 +20,6 @@
     "latest_tested_versions": [
         "Cloud API, December 10, 2020"
     ],
-    "pip_dependencies": {
-        "wheel": [
-            {
-                "module": "boto3",
-                "input_file": "wheels/boto3-1.16.16-py2.py3-none-any.whl"
-            },
-            {
-                "module": "botocore",
-                "input_file": "wheels/botocore-1.19.17-py2.py3-none-any.whl"
-            },
-            {
-                "module": "jmespath",
-                "input_file": "wheels/jmespath-0.10.0-py2.py3-none-any.whl"
-            }
-        ]
-    },
     "pip3_dependencies": {
         "wheel": [
             {
@@ -56,13 +40,11 @@
         "access_key": {
             "description": "Access Key",
             "data_type": "password",
-            "required": false,
             "order": 0
         },
         "secret_key": {
             "description": "Secret Key",
             "data_type": "password",
-            "required": false,
             "order": 1
         },
         "region": {
@@ -91,9 +73,8 @@
             "order": 2
         },
         "use_role": {
-            "description": "Use attached role when running Phantom in ec2",
+            "description": "Use attached role when running Phantom in EC2",
             "data_type": "boolean",
-            "required": false,
             "default": false,
             "order": 3
         }
@@ -120,8 +101,8 @@
                 "role_arn": {
                     "description": "Role ARN",
                     "data_type": "string",
-                    "required": false,
                     "primary": true,
+                    "required": true,
                     "contains": [
                         "aws role arn"
                     ],
@@ -130,8 +111,8 @@
                 "role_session_name": {
                     "description": "Role Session Name",
                     "data_type": "string",
-                    "required": false,
                     "primary": true,
+                    "required": true,
                     "contains": [
                         "aws role session name"
                     ],
@@ -141,14 +122,12 @@
                 "role_session_duration": {
                     "description": "Role Session Duration (Seconds)",
                     "data_type": "numeric",
-                    "required": false,
                     "default": 3600,
                     "order": 2
                 },
                 "external_id": {
                     "description": "External ID",
                     "data_type": "string",
-                    "required": false,
                     "primary": true,
                     "contains": [
                         "aws external id"
@@ -245,21 +224,21 @@
                     "data_path": "action_result.data.*.Credentials.AccessKeyId",
                     "data_type": "string",
                     "example_values": [
-                        "ASIASJL6J5BVCSZ4LG44"
+                        "ZZZZZJL6J5BVCSZZZZZZ"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Credentials.SessionToken",
                     "data_type": "string",
                     "example_values": [
-                        "FwoGZXIvYXdzEE4aDA2uCbAQKVJP7FPODCK4AfnDf/AwR3H93S2ueX+lMFsDGQnbKO6uaot2BCThDuBY5qylrnPHl7BXKCKttkVyER/QgDmEoCYfIRWb/frTd3yu8YMjaXkqHylnKLcZlQDYrraj6PEgtDQpIOrqPWR3Srq1UOUZuIelUBlxCrWdJGpOVXMrF4cHx2++QIXC/yKnseYzGqQZXNczUPP9XD6D0ffZaHqE3S35wFgwdgYzeAWt2TW0HoGqGOI7eF8zvRayMcGas8vrFzYop6Ol/gUyLS5KI8LZzBhXSSUtFb74Oh3fyEFWgnmcX0ZCF3W3sWqIhDS6LKCDdL5vfnlpxw=="
+                        "ZZZZZXIvYXdzEE4aDA2uCbAQKVJP7FPODCK4AfnDf/AwR3H93S2ueX+lMFsDGQnbKO6uaot2BCThDuBY5qylrnPHl7BXKCKttkVyER/QgDmEoCYfIRWb/frTd3yu8YMjaXkqHylnKLcZlQDYrraj6PEgtDQpIOrqPWR3Srq1UOUZuIelUBlxCrWdJGpOVXMrF4cHx2++QIXC/yKnseYzGqQZXNczUPP9XD6D0ffZaHqE3S35wFgwdgYzeAWt2TW0HoGqGOI7eF8zvRayMcGas8vrFzYop6Ol/gUyLS5KI8LZzBhXSSUtFb74Oh3fyEFWgnmcX0ZCF3W3sWqIhDS6LKCDdL5vfnlpxw=="
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Credentials.SecretAccessKey",
                     "data_type": "string",
                     "example_values": [
-                        "1gn+SzbvhXNruEyLgakW1MHhCKwqSFW2ksJFvcIA"
+                        "ZZZZZzbvhXNruEyLgakW1MHhCKwqSFW2ksJFvcIA"
                     ]
                 },
                 {
