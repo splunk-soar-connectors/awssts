@@ -159,8 +159,6 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         if not self._create_client(action_result):
             return action_result.get_status()
 
-        # ret_val, resp_json = self._make_boto_call(action_result, 'get_access_key_info',
-        #                                          AccessKeyId=self._access_key)
         ret_val, resp_json = self._make_boto_call(action_result, 'get_caller_identity')
 
         if phantom.is_fail(ret_val):
