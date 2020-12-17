@@ -33,3 +33,4 @@ STS_REGION_DICT = {
 
 DEFAULT_ROLE_SESSION_DURATION = 3600
 DEFAULT_ROLE_SESSION_NAME = 'Request_from_Phantom'
+ASSUME_ROLE_SUCCESS_MESSAGE = 'Successfully retrieved assume role credentials'

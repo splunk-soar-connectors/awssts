@@ -202,7 +202,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
         action_result.add_data(resp_json)
 
-        return action_result.set_status(phantom.APP_SUCCESS)
+        return action_result.set_status(phantom.APP_SUCCESS, ASSUME_ROLE_SUCCESS_MESSAGE)
 
     def handle_action(self, param):
         ret_val = phantom.APP_SUCCESS

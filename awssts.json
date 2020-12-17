@@ -178,15 +178,16 @@
                     "column_name": "status",
                     "column_order": 3,
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
                     "data_path": "action_result.message",
                     "data_type": "string",
                     "example_values": [
-                        "Credentials: {'AccessKeyId': 'ASIASJL6ZZZZZH7PHL', 'SecretAccessKey': 'ZZZZZeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpvaZZZZZZ', 'Expiration': '2020-11-16 21:49:35'}",
-                        ""
+                        "Successfully retrieved assume role credentials",
+                        "boto3 call to STS failed. Error string: 'An error occurred (AccessDenied) when calling the AssumeRole operation: User: arn:aws:iam::999999999999:user/test-user is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::888888888888:role/TestRole'"
                     ]
                 },
                 {
