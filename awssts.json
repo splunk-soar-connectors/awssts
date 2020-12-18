@@ -191,20 +191,6 @@
                     ]
                 },
                 {
-                    "data_path": "summary.total_objects",
-                    "data_type": "numeric",
-                    "example_values": [
-                        1
-                    ]
-                },
-                {
-                    "data_path": "summary.total_objects_successful",
-                    "data_type": "numeric",
-                    "example_values": [
-                        1
-                    ]
-                },
-                {
                     "data_path": "action_result.data.*.Credentials",
                     "data_type": "string",
                     "contains": [
@@ -303,34 +289,6 @@
                     "data_type": "numeric",
                     "example_values": [
                         200
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.Credentials.Expiration",
-                    "data_type": "string",
-                    "example_values": [
-                        "2020-11-16 21:49:35"
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.Credentials.AccessKeyId",
-                    "data_type": "string",
-                    "example_values": [
-                        "ASIASJL6ZZZZZH7PHL"
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.Credentials.SessionToken",
-                    "data_type": "string",
-                    "example_values": [
-                        "ZZZZZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpvaZZZZZZ"
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.Credentials.SecretAccessKey",
-                    "data_type": "string",
-                    "example_values": [
-                        "ZZZZZeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnZZZZZ"
                     ]
                 },
                 {
