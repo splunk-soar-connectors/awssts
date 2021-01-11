@@ -63,7 +63,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         if config.get('use_role'):
             credentials = self._handle_get_ec2_role()
             if not credentials:
-                return self.set_status(phantom.APP_ERROR, "Failed to get EC2 role credentials")
+                return self.set_status(phantom.APP_ERROR, ASSUME_ROLE_CREDENTIALS_FAILURE_MSG)
             self._access_key = credentials.access_key
             self._secret_key = credentials.secret_key
             self._token = credentials.token
@@ -72,6 +72,9 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
         self._access_key = config.get(STS_JSON_ACCESS_KEY)
         self._secret_key = config.get(STS_JSON_SECRET_KEY)
+
+        if not (self._access_key and self._secret_key):
+            return self.set_status(phantom.APP_ERROR, ASSUME_ROLE_BAD_ASSET_CONFIG_MSG)
 
         return phantom.APP_SUCCESS
 
@@ -202,7 +205,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
         action_result.add_data(resp_json)
 
-        return action_result.set_status(phantom.APP_SUCCESS, ASSUME_ROLE_SUCCESS_MESSAGE)
+        return action_result.set_status(phantom.APP_SUCCESS, ASSUME_ROLE_SUCCESS_MSG)
 
     def handle_action(self, param):
         ret_val = phantom.APP_SUCCESS
