@@ -133,6 +133,30 @@
                         "aws external id"
                     ],
                     "order": 3
+                },
+                "region": {
+                    "description": "Region",
+                    "data_type": "string",
+                    "value_list": [
+                        "US East (Ohio)",
+                        "US East (N. Virginia)",
+                        "US West (N. California)",
+                        "US West (Oregon)",
+                        "Canada (Central)",
+                        "Asia Pacific (Mumbai)",
+                        "Asia Pacific (Tokyo)",
+                        "Asia Pacific (Seoul)",
+                        "Asia Pacific (Singapore)",
+                        "Asia Pacific (Sydney)",
+                        "China (Ningxia)",
+                        "EU (Frankfurt)",
+                        "EU (Ireland)",
+                        "EU (London)",
+                        "South Americia (Sao Paulo)",
+                        "US GovCloud East",
+                        "US GovCloud West"
+                    ],
+                    "order": 4
                 }
             },
             "output": [
@@ -296,6 +320,32 @@
                     "data_type": "numeric",
                     "example_values": [
                         3600
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.region",
+                    "data_type": "string",
+                    "example_values": [
+                        "US East (Ohio)"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string",
+                    "example_values": []
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
                     ]
                 }
             ],

@@ -83,11 +83,14 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
         return phantom.APP_SUCCESS
 
-    def _create_client(self, action_result, service='sts'):
+    def _create_client(self, action_result, service='sts', new_region=None):
 
         boto_config = None
         if self._proxy:
             boto_config = Config(proxies=self._proxy)
+
+        if new_region:
+            self._region = STS_REGION_DICT.get(new_region)
 
         try:
             if self._access_key and self._secret_key:
@@ -185,7 +188,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
                                           DEFAULT_ROLE_SESSION_DURATION)
 
         # create client
-        if phantom.is_fail(self._create_client(action_result, service='sts')):
+        if phantom.is_fail(self._create_client(action_result, service='sts', new_region=param.get('region'))):
             return action_result.get_status()
 
         # make boto3 call
