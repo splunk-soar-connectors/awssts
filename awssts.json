@@ -135,7 +135,7 @@
                     "order": 3
                 },
                 "region": {
-                    "description": "Region",
+                    "description": "Region, overrides default region in asset configuration",
                     "data_type": "string",
                     "value_list": [
                         "US East (Ohio)",

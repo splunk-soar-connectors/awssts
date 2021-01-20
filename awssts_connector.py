@@ -186,9 +186,15 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         role_arn = param.get('role_arn', None)
         role_session_duration = param.get('role_session_duration',
                                           DEFAULT_ROLE_SESSION_DURATION)
+        region = param.get('region')
+        if not region:
+            region = self._region
+            for region_name, region_value in STS_REGION_DICT.items():
+                if region_value == region:
+                    action_result.update_summary({'default_region': region_name})
 
         # create client
-        if phantom.is_fail(self._create_client(action_result, service='sts', new_region=param.get('region'))):
+        if phantom.is_fail(self._create_client(action_result, service='sts', new_region=region)):
             return action_result.get_status()
 
         # make boto3 call
@@ -208,7 +214,9 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
         action_result.add_data(resp_json)
 
-        return action_result.set_status(phantom.APP_SUCCESS, ASSUME_ROLE_SUCCESS_MSG)
+        action_result.update_summary(
+            {'status': ASSUME_ROLE_SUCCESS_MSG})
+        return action_result.set_status(phantom.APP_SUCCESS)
 
     def handle_action(self, param):
         ret_val = phantom.APP_SUCCESS
