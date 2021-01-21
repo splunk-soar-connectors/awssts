@@ -33,6 +33,6 @@ STS_REGION_DICT = {
 
 DEFAULT_ROLE_SESSION_DURATION = 3600
 DEFAULT_ROLE_SESSION_NAME = 'Request_from_Phantom'
-ASSUME_ROLE_SUCCESS_MSG = 'Successfully retrieved assume role credentials'
+ASSUME_ROLE_SUCCESS_MSG = 'Successfully retrieved assume role credentials from region {}'
 ASSUME_ROLE_CREDENTIALS_FAILURE_MSG = 'Failed to retrieve EC2 role credentials'
 ASSUME_ROLE_BAD_ASSET_CONFIG_MSG = 'Please provide access keys or select assume role check box in asset configuration'

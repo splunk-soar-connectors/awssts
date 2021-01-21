@@ -191,7 +191,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
             region = self._region
             for region_name, region_value in STS_REGION_DICT.items():
                 if region_value == region:
-                    action_result.update_summary({'default_region': region_name})
+                    region = region_name
 
         # create client
         if phantom.is_fail(self._create_client(action_result, service='sts', new_region=region)):
@@ -214,9 +214,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
         action_result.add_data(resp_json)
 
-        action_result.update_summary(
-            {'status': ASSUME_ROLE_SUCCESS_MSG})
-        return action_result.set_status(phantom.APP_SUCCESS)
+        return action_result.set_status(phantom.APP_SUCCESS, ASSUME_ROLE_SUCCESS_MSG.format(region))
 
     def handle_action(self, param):
         ret_val = phantom.APP_SUCCESS
