@@ -123,20 +123,14 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         try:
             json.dumps(cur_obj)
             return cur_obj
-        except:
+        except Exception:
             pass
 
         if isinstance(cur_obj, dict):
-            new_dict = {}
-            for k, v in six.iteritems(cur_obj):
-                new_dict[k] = self._sanitize_dates(v)
-            return new_dict
+            return {k: self._sanitize_dates(v) for k,v in six.iteritems(cur_obj)}
 
         if isinstance(cur_obj, list):
-            new_list = []
-            for v in cur_obj:
-                new_list.append(self._sanitize_dates(v))
-            return new_list
+            return [self._sanitize_dates(v) for v in cur_obj]
 
         if isinstance(cur_obj, datetime):
             return cur_obj.strftime("%Y-%m-%d %H:%M:%S")
@@ -182,8 +176,8 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
         role_session_name = param.get('role_session_name',
                                       DEFAULT_ROLE_SESSION_NAME)
-        external_id = param.get('external_id', None)
-        role_arn = param.get('role_arn', None)
+        external_id = param.get('external_id')
+        role_arn = param.get('role_arn')
         role_session_duration = param.get('role_session_duration',
                                           DEFAULT_ROLE_SESSION_DURATION)
         region = param.get('region')
