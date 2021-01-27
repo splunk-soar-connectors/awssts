@@ -127,7 +127,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
             pass
 
         if isinstance(cur_obj, dict):
-            return {k: self._sanitize_dates(v) for k,v in six.iteritems(cur_obj)}
+            return {k: self._sanitize_dates(v) for k, v in six.iteritems(cur_obj)}
 
         if isinstance(cur_obj, list):
             return [self._sanitize_dates(v) for v in cur_obj]
