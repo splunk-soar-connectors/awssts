@@ -1,0 +1,358 @@
+{
+    "appid": "8e8be6eb-a509-45ca-8559-586cb592a6d8",
+    "name": "AWS Security Token Service",
+    "description": "This app integrates with AWS Security Token Service and allows a user to retrieve a temporary set of credentials for some specified account",
+    "type": "identity management",
+    "product_vendor": "AWS",
+    "logo": "logo_awssts.svg",
+    "logo_dark": "logo_awssts_dark.svg",
+    "product_name": "Security Token Service",
+    "python_version": "3",
+    "product_version_regex": ".*",
+    "publisher": "Splunk",
+    "license": "Copyright (c) 2021 Splunk Inc.",
+    "app_version": "1.0.0",
+    "utctime_updated": "2020-11-11T21:17:24.258748Z",
+    "package_name": "phantom_awssts",
+    "main_module": "awssts_connector.py",
+    "min_phantom_version": "4.9.39220",
+    "app_wizard_version": "1.0.0",
+    "latest_tested_versions": [
+        "Cloud API, December 10, 2020"
+    ],
+    "pip3_dependencies": {
+        "wheel": [
+            {
+                "module": "boto3",
+                "input_file": "wheels/boto3-1.16.16-py2.py3-none-any.whl"
+            },
+            {
+                "module": "botocore",
+                "input_file": "wheels/botocore-1.19.17-py2.py3-none-any.whl"
+            },
+            {
+                "module": "jmespath",
+                "input_file": "wheels/jmespath-0.10.0-py2.py3-none-any.whl"
+            }
+        ]
+    },
+    "configuration": {
+        "access_key": {
+            "description": "Access Key",
+            "data_type": "password",
+            "order": 0
+        },
+        "secret_key": {
+            "description": "Secret Key",
+            "data_type": "password",
+            "order": 1
+        },
+        "region": {
+            "description": "Default Region",
+            "data_type": "string",
+            "required": true,
+            "value_list": [
+                "US East (Ohio)",
+                "US East (N. Virginia)",
+                "US West (N. California)",
+                "US West (Oregon)",
+                "Canada (Central)",
+                "Asia Pacific (Mumbai)",
+                "Asia Pacific (Tokyo)",
+                "Asia Pacific (Seoul)",
+                "Asia Pacific (Singapore)",
+                "Asia Pacific (Sydney)",
+                "China (Ningxia)",
+                "EU (Frankfurt)",
+                "EU (Ireland)",
+                "EU (London)",
+                "South Americia (Sao Paulo)",
+                "US GovCloud East",
+                "US GovCloud West"
+            ],
+            "order": 2
+        },
+        "use_role": {
+            "description": "Use attached role when running Phantom in EC2",
+            "data_type": "boolean",
+            "default": false,
+            "order": 3
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "assume role",
+            "identifier": "assume_role",
+            "description": "Assume a role",
+            "verbose": "Retrieve a token for a specified role and user account",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "role_arn": {
+                    "description": "Role ARN",
+                    "data_type": "string",
+                    "primary": true,
+                    "required": true,
+                    "contains": [
+                        "aws role arn"
+                    ],
+                    "order": 0
+                },
+                "role_session_name": {
+                    "description": "Role Session Name",
+                    "data_type": "string",
+                    "primary": true,
+                    "required": true,
+                    "contains": [
+                        "aws role session name"
+                    ],
+                    "default": "Request_from_Phantom",
+                    "order": 1
+                },
+                "role_session_duration": {
+                    "description": "Role Session Duration (Seconds)",
+                    "data_type": "numeric",
+                    "default": 3600,
+                    "order": 2
+                },
+                "external_id": {
+                    "description": "External ID",
+                    "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "aws external id"
+                    ],
+                    "order": 3
+                },
+                "region": {
+                    "description": "Region, overrides default region in asset configuration",
+                    "data_type": "string",
+                    "value_list": [
+                        "US East (Ohio)",
+                        "US East (N. Virginia)",
+                        "US West (N. California)",
+                        "US West (Oregon)",
+                        "Canada (Central)",
+                        "Asia Pacific (Mumbai)",
+                        "Asia Pacific (Tokyo)",
+                        "Asia Pacific (Seoul)",
+                        "Asia Pacific (Singapore)",
+                        "Asia Pacific (Sydney)",
+                        "China (Ningxia)",
+                        "EU (Frankfurt)",
+                        "EU (Ireland)",
+                        "EU (London)",
+                        "South Americia (Sao Paulo)",
+                        "US GovCloud East",
+                        "US GovCloud West"
+                    ],
+                    "order": 4
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.role_session_name",
+                    "data_type": "string",
+                    "column_name": "role_session_name",
+                    "column_order": 0,
+                    "contains": [
+                        "aws role session name"
+                    ],
+                    "example_values": [
+                        "Request_from_Phantom"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.external_id",
+                    "data_type": "string",
+                    "column_name": "external_id",
+                    "column_order": 1,
+                    "contains": [
+                        "aws external id"
+                    ],
+                    "example_values": [
+                        "999"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.role_arn",
+                    "data_type": "string",
+                    "column_name": "role_arn",
+                    "column_order": 2,
+                    "contains": [
+                        "aws role arn"
+                    ],
+                    "example_values": [
+                        "arn:aws:iam::157568069999:role/TestRole"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3,
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully retrieved assume role credentials",
+                        "boto3 call to STS failed. Error string: 'An error occurred (AccessDenied) when calling the AssumeRole operation: User: arn:aws:iam::999999999999:user/test-user is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::888888888888:role/TestRole'"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Credentials",
+                    "data_type": "string",
+                    "contains": [
+                        "aws credentials"
+                    ],
+                    "example_values": [
+                        "{'AccessKeyId': 'ASIASJL6ZZZZZH7PHL', 'SecretAccessKey': 'ZZZZZeMz8TU6Y1f39zTmTVwDc+s1k7KRZwnZZZZZ', 'SessionToken': 'ZZZZZXIvYXdzELb//////////wEaDJTGOOqwfEP3bVJ4iiKrAbhh7VNxBacRdi1Rgurc9jpfU7TRNL5dQGV0SfVenaDMuHR+8pkfQz+Cw9FV5KENZinXBF/BmT4yF7Cn9eDqVUTKOgXBlMyPCsnwTeF8ZR+2gQx5g3m4gmtuCbQTgfwxm1W55P31S6Azrt4U8s9L4zHNwbW22+xo95NWGCrIggx1bDC4ytA4eSZpwmgm1Y1wMG6wtYybwK3GsZzSjsJC22qxNBjs9Cxzcpxl7Sjfy8v9BTItM7tYAMv8yLKYegKgDYYJBIQjzyclhsUW7w+sfSAsolNC673I2TMpvaZZZZZZ', 'Expiration': '2020-11-16 21:49:35'}"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Credentials.Expiration",
+                    "data_type": "string",
+                    "example_values": [
+                        "2020-12-03 21:59:19"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Credentials.AccessKeyId",
+                    "data_type": "string",
+                    "example_values": [
+                        "ZZZZZJL6J5BVCSZZZZZZ"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Credentials.SessionToken",
+                    "data_type": "string",
+                    "example_values": [
+                        "ZZZZZXIvYXdzEE4aDA2uCbAQKVJP7FPODCK4AfnDf/AwR3H93S2ueX+lMFsDGQnbKO6uaot2BCThDuBY5qylrnPHl7BXKCKttkVyER/QgDmEoCYfIRWb/frTd3yu8YMjaXkqHylnKLcZlQDYrraj6PEgtDQpIOrqPWR3Srq1UOUZuIelUBlxCrWdJGpOVXMrF4cHx2++QIXC/yKnseYzGqQZXNczUPP9XD6D0ffZaHqE3S35wFgwdgYzeAWt2TW0HoGqGOI7eF8zvRayMcGas8vrFzYop6Ol/gUyLS5KI8LZzBhXSSUtFb74Oh3fyEFWgnmcX0ZCF3W3sWqIhDS6LKCDdL5vfnlpxw=="
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Credentials.SecretAccessKey",
+                    "data_type": "string",
+                    "example_values": [
+                        "ZZZZZzbvhXNruEyLgakW1MHhCKwqSFW2ksJFvcIA"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AssumedRoleUser.Arn",
+                    "data_type": "string",
+                    "example_values": [
+                        "arn:aws:sts::157568099999:assumed-role/TestRole/Request_from_Phantom"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.AssumedRoleUser.AssumedRoleId",
+                    "data_type": "string",
+                    "example_values": [
+                        "ASIASJL6ZZZZZH7PHL:Request_from_Phantom"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RequestId",
+                    "data_type": "string",
+                    "example_values": [
+                        "c8bc1c72-36e1-4b27-8f28-95e26e7013ea"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.date",
+                    "data_type": "string",
+                    "example_values": [
+                        "Thu, 03 Dec 2020 20:59:19 GMT"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-type",
+                    "data_type": "string",
+                    "example_values": [
+                        "text/xml"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.content-length",
+                    "data_type": "string",
+                    "example_values": [
+                        "1073"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPHeaders.x-amzn-requestid",
+                    "data_type": "string",
+                    "example_values": [
+                        "c8bc1c72-36e1-4b27-8f28-95e26e7013ea"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.RetryAttempts",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.ResponseMetadata.HTTPStatusCode",
+                    "data_type": "numeric",
+                    "example_values": [
+                        200
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.role_session_duration",
+                    "data_type": "numeric",
+                    "example_values": [
+                        3600
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.region",
+                    "data_type": "string",
+                    "example_values": [
+                        "US East (Ohio)"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string",
+                    "example_values": []
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        0
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        }
+    ]
+}
