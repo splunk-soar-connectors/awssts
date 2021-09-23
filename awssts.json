@@ -11,14 +11,14 @@
     "product_version_regex": ".*",
     "publisher": "Splunk",
     "license": "Copyright (c) 2021 Splunk Inc.",
-    "app_version": "1.1.2",
+    "app_version": "1.2.0",
     "utctime_updated": "2021-06-02T17:53:00.000000Z",
     "package_name": "phantom_awssts",
     "main_module": "awssts_connector.py",
-    "min_phantom_version": "4.9.39220",
+    "min_phantom_version": "4.10.0.40961",
     "app_wizard_version": "1.0.0",
     "latest_tested_versions": [
-        "Cloud API, December 10, 2020"
+        "Cloud API, September 23, 2021"
     ],
     "pip3_dependencies": {
         "wheel": [
@@ -76,6 +76,9 @@
             "description": "Use attached role when running Phantom in EC2",
             "data_type": "boolean",
             "default": false,
+            "visibility": [
+                "onprem"
+            ],
             "order": 3
         }
     },
@@ -94,7 +97,7 @@
             "action": "assume role",
             "identifier": "assume_role",
             "description": "Assume a role",
-            "verbose": "Retrieve a token for a specified role and user account",
+            "verbose": "Retrieve a token for a specified role and user account.",
             "type": "generic",
             "read_only": false,
             "parameters": {
