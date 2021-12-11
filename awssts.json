@@ -8,6 +8,7 @@
     "logo_dark": "logo_awssts_dark.svg",
     "product_name": "Security Token Service",
     "python_version": "3",
+    "fips_compliant":true,
     "product_version_regex": ".*",
     "publisher": "Splunk",
     "license": "Copyright (c) 2021 Splunk Inc.",

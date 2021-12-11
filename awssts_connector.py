@@ -14,19 +14,18 @@
 # and limitations under the License.
 #
 #
-# Phantom App imports
-import phantom.app as phantom
-from phantom.base_connector import BaseConnector
-from phantom.action_result import ActionResult
-
-# Usage of the consts file is recommended
-from awssts_consts import *
-from boto3 import client, Session
-from datetime import datetime
-from botocore.config import Config
-import requests
 import json
+from datetime import datetime
+
+import phantom.app as phantom
+import requests
 import six
+from boto3 import Session, client
+from botocore.config import Config
+from phantom.action_result import ActionResult
+from phantom.base_connector import BaseConnector
+
+from awssts_consts import *
 
 
 class RetVal(tuple):
@@ -240,8 +239,9 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
 
 def main():
-    import pudb
     import argparse
+
+    import pudb
 
     pudb.set_trace()
 
