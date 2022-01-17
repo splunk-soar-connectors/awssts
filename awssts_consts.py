@@ -35,6 +35,7 @@ STS_REGION_DICT = {
         "US GovCloud West": "us-gov-west-1",
     }
 
+DEFAULT_TIMEOUT = 30
 DEFAULT_ROLE_SESSION_DURATION = 3600
 DEFAULT_ROLE_SESSION_NAME = 'Request_from_Phantom'
 ASSUME_ROLE_SUCCESS_MSG = 'Successfully retrieved assume role credentials from region {}'
