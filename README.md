@@ -2,7 +2,7 @@
 # AWS Security Token Service
 
 Publisher: Splunk  
-Connector Version: 1\.2\.7  
+Connector Version: 1\.2\.9  
 Product Vendor: AWS  
 Product Name: Security Token Service  
 Product Version Supported (regex): "\.\*"  
@@ -10,8 +10,8 @@ Minimum Product Version: 4\.10\.0\.40961
 
 This app integrates with AWS Security Token Service and allows a user to retrieve a temporary set of credentials for some specified account
 
-[comment]: # " File: readme.md"
-[comment]: # "  Copyright (c) 2021 Splunk Inc."
+[comment]: # " File: README.md"
+[comment]: # "  Copyright (c) 2021-2022 Splunk Inc."
 [comment]: # ""
 [comment]: # "Licensed under the Apache License, Version 2.0 (the 'License');"
 [comment]: # "you may not use this file except in compliance with the License."
