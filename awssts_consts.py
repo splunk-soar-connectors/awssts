@@ -1,13 +1,17 @@
-# --
 # File: awssts_consts.py
 #
-# Copyright (c) 2021 Splunk Inc.
+# Copyright (c) 2021-2022 Splunk Inc.
 #
-# SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
-# without a valid written license from Splunk Inc. is PROHIBITED.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# --
-
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions
+# and limitations under the License.
 STS_JSON_ACCESS_KEY = "access_key"
 STS_JSON_SECRET_KEY = "secret_key"
 
@@ -31,6 +35,7 @@ STS_REGION_DICT = {
         "US GovCloud West": "us-gov-west-1",
     }
 
+DEFAULT_TIMEOUT = 30
 DEFAULT_ROLE_SESSION_DURATION = 3600
 DEFAULT_ROLE_SESSION_NAME = 'Request_from_Phantom'
 ASSUME_ROLE_SUCCESS_MSG = 'Successfully retrieved assume role credentials from region {}'
