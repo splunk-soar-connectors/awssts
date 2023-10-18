@@ -2,11 +2,11 @@
 # AWS Security Token Service
 
 Publisher: Splunk  
-Connector Version: 1\.2\.9  
+Connector Version: 1.2.9  
 Product Vendor: AWS  
 Product Name: Security Token Service  
-Product Version Supported (regex): "\.\*"  
-Minimum Product Version: 4\.10\.0\.40961  
+Product Version Supported (regex): ".\*"  
+Minimum Product Version: 5.5.0  
 
 This app integrates with AWS Security Token Service and allows a user to retrieve a temporary set of credentials for some specified account
 
@@ -49,10 +49,10 @@ The below configuration variables are required for this Connector to operate.  T
 
 VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
-**access\_key** |  optional  | password | Access Key
-**secret\_key** |  optional  | password | Secret Key
+**access_key** |  optional  | password | Access Key
+**secret_key** |  optional  | password | Secret Key
 **region** |  required  | string | Default Region
-**use\_role** |  optional  | boolean | Use attached role when running Phantom in EC2
+**use_role** |  optional  | boolean | Use attached role when running Phantom in EC2
 
 ### Supported Actions  
 [test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration  
@@ -76,41 +76,41 @@ Assume a role
 Type: **generic**  
 Read only: **False**
 
-Retrieve a token for a specified role and user account\.
+Retrieve a token for a specified role and user account.
 
 #### Action Parameters
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**role\_arn** |  required  | Role ARN | string |  `aws role arn` 
-**role\_session\_name** |  required  | Role Session Name | string |  `aws role session name` 
-**role\_session\_duration** |  optional  | Role Session Duration \(Seconds\) | numeric | 
-**external\_id** |  optional  | External ID | string |  `aws external id` 
+**role_arn** |  required  | Role ARN | string |  `aws role arn` 
+**role_session_name** |  required  | Role Session Name | string |  `aws role session name` 
+**role_session_duration** |  optional  | Role Session Duration (Seconds) | numeric | 
+**external_id** |  optional  | External ID | string |  `aws external id` 
 **region** |  optional  | Region, overrides default region in asset configuration | string | 
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS
---------- | ---- | --------
-action\_result\.parameter\.role\_session\_name | string |  `aws role session name` 
-action\_result\.parameter\.external\_id | string |  `aws external id` 
-action\_result\.parameter\.role\_arn | string |  `aws role arn` 
-action\_result\.status | string | 
-action\_result\.message | string | 
-action\_result\.data\.\*\.Credentials | string |  `aws credentials` 
-action\_result\.data\.\*\.Credentials\.Expiration | string | 
-action\_result\.data\.\*\.Credentials\.AccessKeyId | string | 
-action\_result\.data\.\*\.Credentials\.SessionToken | string | 
-action\_result\.data\.\*\.Credentials\.SecretAccessKey | string | 
-action\_result\.data\.\*\.AssumedRoleUser\.Arn | string | 
-action\_result\.data\.\*\.AssumedRoleUser\.AssumedRoleId | string | 
-action\_result\.data\.\*\.ResponseMetadata\.RequestId | string | 
-action\_result\.data\.\*\.ResponseMetadata\.HTTPHeaders\.date | string | 
-action\_result\.data\.\*\.ResponseMetadata\.HTTPHeaders\.content\-type | string | 
-action\_result\.data\.\*\.ResponseMetadata\.HTTPHeaders\.content\-length | string | 
-action\_result\.data\.\*\.ResponseMetadata\.HTTPHeaders\.x\-amzn\-requestid | string | 
-action\_result\.data\.\*\.ResponseMetadata\.RetryAttempts | numeric | 
-action\_result\.data\.\*\.ResponseMetadata\.HTTPStatusCode | numeric | 
-action\_result\.parameter\.role\_session\_duration | numeric | 
-action\_result\.parameter\.region | string | 
-action\_result\.summary | string | 
-summary\.total\_objects | numeric | 
-summary\.total\_objects\_successful | numeric | 
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.parameter.role_session_name | string |  `aws role session name`  |   Request_from_Phantom 
+action_result.parameter.external_id | string |  `aws external id`  |   999 
+action_result.parameter.role_arn | string |  `aws role arn`  |   arn:aws:iam::157568069999:role/TestRole 
+action_result.status | string |  |   success  failed 
+action_result.message | string |  |   Successfully retrieved assume role credentials  boto3 call to STS failed. Error string: 'An error occurred (AccessDenied) when calling the AssumeRole operation: User: arn:aws:iam::999999999999:user/test-user is not authorized to perform: sts:AssumeRole on resource: arn:aws:iam::888888888888:role/TestRole' 
+action_result.data.\*.Credentials | string |  `aws credentials`  |   {'AccessKeyId': '\*REDACTED\*', 'SecretAccessKey': '\*REDACTED\*', 'SessionToken': '\*REDACTED\*', 'Expiration': '2020-11-16 21:49:35'} 
+action_result.data.\*.Credentials.Expiration | string |  |   2020-12-03 21:59:19 
+action_result.data.\*.Credentials.AccessKeyId | string |  |   \*REDACTED\* 
+action_result.data.\*.Credentials.SessionToken | string |  |   \*REDACTED\* 
+action_result.data.\*.Credentials.SecretAccessKey | string |  |   \*REDACTED\* 
+action_result.data.\*.AssumedRoleUser.Arn | string |  |   arn:aws:sts::157568099999:assumed-role/TestRole/Request_from_Phantom 
+action_result.data.\*.AssumedRoleUser.AssumedRoleId | string |  |   \*REDACTED\* 
+action_result.data.\*.ResponseMetadata.RequestId | string |  |   c8bc1c72-36e1-4b27-8f28-95e26e7013ea 
+action_result.data.\*.ResponseMetadata.HTTPHeaders.date | string |  |   Thu, 03 Dec 2020 20:59:19 GMT 
+action_result.data.\*.ResponseMetadata.HTTPHeaders.content-type | string |  |   text/xml 
+action_result.data.\*.ResponseMetadata.HTTPHeaders.content-length | string |  |   1073 
+action_result.data.\*.ResponseMetadata.HTTPHeaders.x-amzn-requestid | string |  |   c8bc1c72-36e1-4b27-8f28-95e26e7013ea 
+action_result.data.\*.ResponseMetadata.RetryAttempts | numeric |  |   0 
+action_result.data.\*.ResponseMetadata.HTTPStatusCode | numeric |  |   200 
+action_result.parameter.role_session_duration | numeric |  |   3600 
+action_result.parameter.region | string |  |   US East (Ohio) 
+action_result.summary | string |  |  
+summary.total_objects | numeric |  |   1 
+summary.total_objects_successful | numeric |  |   0 
