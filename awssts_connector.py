@@ -1,6 +1,6 @@
 # File: awssts_connector.py
 #
-# Copyright (c) 2021-2022 Splunk Inc.
+# Copyright (c) 2021-2024 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ from datetime import datetime
 
 import phantom.app as phantom
 import requests
-import six
 from boto3 import Session, client
 from botocore.config import Config
 from phantom.action_result import ActionResult
@@ -132,7 +131,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
             pass
 
         if isinstance(cur_obj, dict):
-            return {k: self._sanitize_dates(v) for k, v in six.iteritems(cur_obj)}
+            return {k: self._sanitize_dates(v) for k, v in cur_obj.items()}
 
         if isinstance(cur_obj, list):
             return [self._sanitize_dates(v) for v in cur_obj]
@@ -212,6 +211,8 @@ class AwsSecureTokenServiceConnector(BaseConnector):
             return action_result.get_status()
 
         action_result.add_data(resp_json)
+
+        self.save_progress(f"Action handler for: {self.get_action_identifier()} has finished successfully")
 
         return action_result.set_status(phantom.APP_SUCCESS, ASSUME_ROLE_SUCCESS_MSG.format(region))
 
