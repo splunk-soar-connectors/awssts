@@ -1,5 +1,5 @@
 [comment]: # " File: README.md"
-[comment]: # "  Copyright (c) 2021-2022 Splunk Inc."
+[comment]: # "  Copyright (c) 2021-2024 Splunk Inc."
 [comment]: # ""
 [comment]: # "Licensed under the Apache License, Version 2.0 (the 'License');"
 [comment]: # "you may not use this file except in compliance with the License."
@@ -19,7 +19,7 @@ There are two ways to configure an AWS STS asset. The first is to configure the 
 an EC2 instance, the **use_role** checkbox can be checked instead. This will allow the role that is
 attached to the instance to be used. Please see the [AWS EC2 and IAM
 documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html)
-for more information.
+for more information. 
 
 ## Assuming a Role
 
