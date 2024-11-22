@@ -16,7 +16,7 @@
     "utctime_updated": "2023-10-31T10:18:56.000000Z",
     "package_name": "phantom_awssts",
     "main_module": "awssts_connector.py",
-    "min_phantom_version": "6.2.2",
+    "min_phantom_version": "6.3.0",
     "app_wizard_version": "1.0.0",
     "latest_tested_versions": [
         "Cloud API, September 23, 2021"
