@@ -36,20 +36,8 @@
                 "input_file": "wheels/shared/jmespath-0.10.0-py2.py3-none-any.whl"
             },
             {
-                "module": "python_dateutil",
-                "input_file": "wheels/shared/python_dateutil-2.8.2-py2.py3-none-any.whl"
-            },
-            {
                 "module": "s3transfer",
                 "input_file": "wheels/shared/s3transfer-0.3.7-py2.py3-none-any.whl"
-            },
-            {
-                "module": "six",
-                "input_file": "wheels/shared/six-1.16.0-py2.py3-none-any.whl"
-            },
-            {
-                "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.17-py2.py3-none-any.whl"
             }
         ]
     },
