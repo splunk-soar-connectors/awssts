@@ -6,7 +6,7 @@ Connector Version: 1.2.10
 Product Vendor: AWS  
 Product Name: Security Token Service  
 Product Version Supported (regex): ".\*"  
-Minimum Product Version: 6.1.1  
+Minimum Product Version: 6.3.0  
 
 This app integrates with AWS Security Token Service and allows a user to retrieve a temporary set of credentials for some specified account
 
@@ -44,8 +44,8 @@ This is true whether the receiving action's asset is configured with the access 
 or if the EC2 instance role credentials are used.
 
 
-### Configuration Variables
-The below configuration variables are required for this Connector to operate.  These variables are specified when configuring a Security Token Service asset in SOAR.
+### Configuration variables
+This table lists the configuration variables required to operate AWS Security Token Service. These variables are specified when configuring a Security Token Service asset in Splunk SOAR.
 
 VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
