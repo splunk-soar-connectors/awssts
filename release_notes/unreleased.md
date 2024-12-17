@@ -1,2 +1,2 @@
 **Unreleased**
-* [PSAAS-20398] update dependencies in requirements
+* Updated dependencies to resolve security vulnerabilities [PSAAS-20398]
