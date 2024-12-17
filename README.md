@@ -2,7 +2,7 @@
 # AWS Security Token Service
 
 Publisher: Splunk  
-Connector Version: 1.2.10  
+Connector Version: 1.2.11  
 Product Vendor: AWS  
 Product Name: Security Token Service  
 Product Version Supported (regex): ".\*"  
