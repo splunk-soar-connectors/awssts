@@ -6,7 +6,7 @@ Connector Version: 1.2.11
 Product Vendor: AWS  
 Product Name: Security Token Service  
 Product Version Supported (regex): ".\*"  
-Minimum Product Version: 6.3.0
+Minimum Product Version: 6.3.0  
 
 This app integrates with AWS Security Token Service and allows a user to retrieve a temporary set of credentials for some specified account
 
