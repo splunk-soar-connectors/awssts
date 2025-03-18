@@ -1,6 +1,6 @@
 # File: awssts_connector.py
 #
-# Copyright (c) 2021-2024 Splunk Inc.
+# Copyright (c) 2021-2025 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,17 +28,14 @@ from awssts_consts import *
 
 
 class RetVal(tuple):
-
     def __new__(cls, val1, val2=None):
         return tuple.__new__(RetVal, (val1, val2))
 
 
 class AwsSecureTokenServiceConnector(BaseConnector):
-
     def __init__(self):
-
         # Call the BaseConnectors init first
-        super(AwsSecureTokenServiceConnector, self).__init__()
+        super().__init__()
 
         self._state = None
         self._region = None
@@ -88,7 +85,6 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         return phantom.APP_SUCCESS
 
     def _create_client(self, action_result, service="sts", new_region=None):
-
         boto_config = None
         if self._proxy:
             boto_config = Config(proxies=self._proxy)
@@ -114,12 +110,11 @@ class AwsSecureTokenServiceConnector(BaseConnector):
 
                 self._client = client("sts", region_name=self._region, config=boto_config)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Could not create boto3 client: {0}".format(e))
+            return action_result.set_status(phantom.APP_ERROR, f"Could not create boto3 client: {e}")
 
         return phantom.APP_SUCCESS
 
     def _sanitize_dates(self, cur_obj):
-
         try:
             json.dumps(cur_obj)
             return cur_obj
@@ -138,11 +133,10 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         return cur_obj
 
     def _make_boto_call(self, action_result, method, **kwargs):
-
         try:
             boto_func = getattr(self._client, method)
         except AttributeError:
-            return RetVal(action_result.set_status(phantom.APP_ERROR, "Invalid method: {0}".format(method)), None)
+            return RetVal(action_result.set_status(phantom.APP_ERROR, f"Invalid method: {method}"), None)
 
         try:
             resp_json = boto_func(**kwargs)
@@ -152,7 +146,6 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         return phantom.APP_SUCCESS, self._sanitize_dates(resp_json)
 
     def _handle_test_connectivity(self, param):
-
         self.save_progress("Querying STS to check credentials")
         action_result = self.add_action_result(ActionResult(dict(param)))
 
@@ -169,8 +162,7 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_assume_role(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
 
@@ -229,7 +221,6 @@ class AwsSecureTokenServiceConnector(BaseConnector):
         return ret_val
 
     def _handle_get_ec2_role(self):
-
         session = Session(region_name=self._region)
         credentials = session.get_credentials()
         return credentials
@@ -258,7 +249,6 @@ def main():
     verify = args.verify
 
     if username is not None and password is None:
-
         # User specified a username but not a password, so ask
         import getpass
 
