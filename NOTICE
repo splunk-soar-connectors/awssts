@@ -1,27 +1,39 @@
 Splunk SOAR AWS Security Token Service
-Copyright (c) 2021-2022 Splunk Inc.
+Copyright (c) 2021-2025 Splunk Inc.
 
-Third-party Software Attributions:
+Third Party Software Attributions:
 
-Library: boto3
+Name: boto3
 Version: 1.17.30
-License: Apache 2.0
-Copyright 2013-2017 Amazon.com, Inc
+Author: Amazon Web Services
+License: Apache License 2.0
 
-Library: botocore
+Name: botocore
 Version: 1.20.30
-License: Apache 2.0
-Copyright 2008-2011 Andrey Petrov and contributors
-Copyright 2012 Kenneth Reitz
-Copyright 2012-2017 Amazon.com, Inc
-Copyright 2013 Kenneth Reitz
+Author: Amazon Web Services
+License: Apache License 2.0
 
-Library: requests
-Version: 2.25.0
-License: Apache 2.0
-Kenneth Reitz
-
-Library: six
-Version: 1.15.0
+Name: jmespath
+Version: 0.10.0
+Author: James Saryerwinnie
 License: MIT
-Copyright 2010-2020 Benjamin Peterson
+
+Name: python-dateutil
+Version: 2.9.0.post0
+Author: Gustavo Niemeyer
+License: Dual License
+
+Name: s3transfer
+Version: 0.3.7
+Author: Amazon Web Services
+License: Apache License 2.0
+
+Name: six
+Version: 1.17.0
+Author: Benjamin Peterson
+License: MIT
+
+Name: urllib3
+Version: 1.26.20
+Author: Andrey Petrov
+License: MIT
