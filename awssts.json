@@ -21,26 +21,6 @@
     "latest_tested_versions": [
         "Cloud API, September 23, 2021"
     ],
-    "pip3_dependencies": {
-        "wheel": [
-            {
-                "module": "boto3",
-                "input_file": "wheels/shared/boto3-1.17.30-py2.py3-none-any.whl"
-            },
-            {
-                "module": "botocore",
-                "input_file": "wheels/shared/botocore-1.20.30-py2.py3-none-any.whl"
-            },
-            {
-                "module": "jmespath",
-                "input_file": "wheels/shared/jmespath-0.10.0-py2.py3-none-any.whl"
-            },
-            {
-                "module": "s3transfer",
-                "input_file": "wheels/shared/s3transfer-0.3.7-py2.py3-none-any.whl"
-            }
-        ]
-    },
     "configuration": {
         "access_key": {
             "description": "Access Key",
@@ -362,5 +342,25 @@
             },
             "versions": "EQ(*)"
         }
-    ]
+    ],
+    "pip39_dependencies": {
+        "wheel": [
+            {
+                "module": "boto3",
+                "input_file": "wheels/shared/boto3-1.17.30-py2.py3-none-any.whl"
+            },
+            {
+                "module": "botocore",
+                "input_file": "wheels/shared/botocore-1.20.30-py2.py3-none-any.whl"
+            },
+            {
+                "module": "jmespath",
+                "input_file": "wheels/shared/jmespath-0.10.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "s3transfer",
+                "input_file": "wheels/shared/s3transfer-0.3.7-py2.py3-none-any.whl"
+            }
+        ]
+    }
 }
