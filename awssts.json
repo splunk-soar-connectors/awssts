@@ -25,7 +25,7 @@
         "wheel": [
             {
                 "module": "boto3",
-                "input_file": "wheels/shared/boto3-1.28.77-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/boto3-1.28.77-py3-none-any.whl"
             },
             {
                 "module": "botocore",
