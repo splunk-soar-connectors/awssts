@@ -1,3 +1,3 @@
 **Unreleased**
 
-* chore(ci): update pre-commit config
+* Upgrade botocore to version 1.39.11
