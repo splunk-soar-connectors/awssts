@@ -1,9 +1,9 @@
 # AWS Security Token Service
 
-Publisher: Splunk \
-Connector Version: 1.2.11 \
-Product Vendor: AWS \
-Product Name: Security Token Service \
+Publisher: Splunk <br>
+Connector Version: 1.2.11 <br>
+Product Vendor: AWS <br>
+Product Name: Security Token Service <br>
 Minimum Product Version: 6.3.0
 
 This app integrates with AWS Security Token Service and allows a user to retrieve a temporary set of credentials for some specified account
@@ -40,14 +40,14 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 
 ### Supported Actions
 
-[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration \
+[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration <br>
 [assume role](#action-assume-role) - Assume a role
 
 ## action: 'test connectivity'
 
 Validate the asset configuration for connectivity using supplied configuration
 
-Type: **test** \
+Type: **test** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -62,7 +62,7 @@ No Output
 
 Assume a role
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Retrieve a token for a specified role and user account.
