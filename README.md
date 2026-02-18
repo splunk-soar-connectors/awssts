@@ -1,7 +1,7 @@
 # AWS Security Token Service
 
 Publisher: Splunk <br>
-Connector Version: 1.2.11 <br>
+Connector Version: 1.2.12 <br>
 Product Vendor: AWS <br>
 Product Name: Security Token Service <br>
 Minimum Product Version: 6.3.0
