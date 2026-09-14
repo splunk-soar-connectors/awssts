@@ -1,6 +1,6 @@
 # File: awssts_consts.py
 #
-# Copyright (c) 2021-2025 Splunk Inc.
+# Copyright (c) 2021-2026 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@ STS_JSON_ACCESS_KEY = "access_key"
 STS_JSON_SECRET_KEY = "secret_key"  # pragma: allowlist secret
 
 STS_REGION_DICT = {
-    "US East (Ohio)": "us-east-1",
-    "US East (N. Virginia)": "us-east-2",
+    "US East (Ohio)": "us-east-2",
+    "US East (N. Virginia)": "us-east-1",
     "US West (N. California)": "us-west-1",
     "US West (Oregon)": "us-west-2",
     "Canada (Central)": "ca-central-1",
